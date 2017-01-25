@@ -15,6 +15,9 @@
 		E15294ED1E384180000E6D69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15294EB1E384180000E6D69 /* Main.storyboard */; };
 		E15294EF1E384180000E6D69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E15294EE1E384180000E6D69 /* Assets.xcassets */; };
 		E15294F21E384180000E6D69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15294F01E384180000E6D69 /* LaunchScreen.storyboard */; };
+		E15954A31E3943BE00562513 /* TableData.m in Sources */ = {isa = PBXBuildFile; fileRef = E15954A21E3943BE00562513 /* TableData.m */; };
+		E1E10EDC1E39258900C7A4F8 /* ConnectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E10EDB1E39258900C7A4F8 /* ConnectionHandler.m */; };
+		E1E10EE71E392B9900C7A4F8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E10EE61E392B9900C7A4F8 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,11 @@
 		E15294EE1E384180000E6D69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E15294F11E384180000E6D69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E15294F31E384180000E6D69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E15954A21E3943BE00562513 /* TableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableData.m; path = ../TableData.m; sourceTree = "<group>"; };
+		E15954A41E3943CD00562513 /* TableData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TableData.h; path = ../TableData.h; sourceTree = "<group>"; };
+		E1E10EDB1E39258900C7A4F8 /* ConnectionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionHandler.m; sourceTree = "<group>"; };
+		E1E10EDD1E3925E400C7A4F8 /* ConnectionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionHandler.h; sourceTree = "<group>"; };
+		E1E10EE61E392B9900C7A4F8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E10EE71E392B9900C7A4F8 /* SystemConfiguration.framework in Frameworks */,
 				BB2688F5F260BA5919C46ABB /* libPods-TelstraAssignment.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +85,8 @@
 		E13DE4281E384CD100F11DD3 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				E1E10EDD1E3925E400C7A4F8 /* ConnectionHandler.h */,
+				E1E10EDB1E39258900C7A4F8 /* ConnectionHandler.m */,
 			);
 			name = Handlers;
 			sourceTree = "<group>";
@@ -83,6 +94,8 @@
 		E13DE4291E384CE000F11DD3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E15954A41E3943CD00562513 /* TableData.h */,
+				E15954A21E3943BE00562513 /* TableData.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -137,6 +150,7 @@
 		FCCFF4852616D1CFE679DDEC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1E10EE61E392B9900C7A4F8 /* SystemConfiguration.framework */,
 				1388DF7DBF8548495A13D8A1 /* libPods-TelstraAssignment.a */,
 			);
 			name = Frameworks;
@@ -264,10 +278,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15954A31E3943BE00562513 /* TableData.m in Sources */,
 				E15294EA1E384180000E6D69 /* ViewController.m in Sources */,
 				E13DE42B1E384D4400F11DD3 /* LazyLoadTableView.m in Sources */,
 				E15294E71E384180000E6D69 /* AppDelegate.m in Sources */,
 				E15294E41E384180000E6D69 /* main.m in Sources */,
+				E1E10EDC1E39258900C7A4F8 /* ConnectionHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

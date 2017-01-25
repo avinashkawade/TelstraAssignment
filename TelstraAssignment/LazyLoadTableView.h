@@ -12,8 +12,9 @@
 
 #endif /* LazyLoadTableView_h */
 #import <UIKit/UIKit.h>
+#import "ConnectionHandler.h"
 
-@interface LazyLoadTableView: UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface LazyLoadTableView: UIViewController <UITableViewDelegate, UITableViewDataSource,ConnectionHandlerProtocol>
 {
     UITableView *lazyTableView;
 

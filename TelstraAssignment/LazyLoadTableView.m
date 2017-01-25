@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "LazyLoadTableView.h"
 #import "Constant.h"
+#import "ConnectionHandler.h"
+#import "TableData.h"
 
 @interface LazyLoadTableView ()
 {
@@ -22,7 +24,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    ConnectionHandler *_connectionObj = [[ConnectionHandler alloc] init];
+    [_connectionObj initConnection];
+    [_connectionObj setDelegate:self];
     [self setupScreen];
+   
+}
+
+
+- (void)handleResponseData:(NSArray *)listData :(NSString *)title
+{
+    NSLog(@"File Data : %@", listData);
+
+    self.dataListArray = [NSMutableArray arrayWithArray:listData];
+    [lazyTableView reloadData];
+
+}
+- (void)onError:(NSError *)error{
+
 }
 
 /*-----------------------------------------------------------------------------------------
@@ -57,7 +76,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 15;//[_dataListArray count];
+    return [self.dataListArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -68,6 +87,8 @@
    
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        TableData *dataObj = (TableData*) [self.dataListArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = dataObj.title;
     }
     return cell;
 }
