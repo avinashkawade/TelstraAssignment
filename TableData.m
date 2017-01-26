@@ -12,23 +12,15 @@
 @implementation TableData
 
 @synthesize title;
-@synthesize descriptionDetail;
+@synthesize descriptionData;
 @synthesize imgUrl;
 
 -(id) init
 {
     title=@"";
-    descriptionDetail=@"";
+    descriptionData=@"";
     imgUrl = @"";
     return self;
 }
 
--(id) setData:(NSDictionary *)infoDict
-{
-    [self setTitle:[infoDict objectForKey:@"title"]];
-    [self setDescriptionDetail:[infoDict objectForKey:@"description"]];
-    [self setImgUrl:[infoDict objectForKey:@"imageHref"]];
-    
-    return self;
-}
 @end

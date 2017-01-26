@@ -16,6 +16,8 @@
 		E15294EF1E384180000E6D69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E15294EE1E384180000E6D69 /* Assets.xcassets */; };
 		E15294F21E384180000E6D69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15294F01E384180000E6D69 /* LaunchScreen.storyboard */; };
 		E15954A31E3943BE00562513 /* TableData.m in Sources */ = {isa = PBXBuildFile; fileRef = E15954A21E3943BE00562513 /* TableData.m */; };
+		E15954AA1E39635700562513 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15954A91E39635700562513 /* CustomCell.m */; };
+		E15954AE1E39A2FB00562513 /* defaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E15954AD1E39A2FB00562513 /* defaultImage.png */; };
 		E1E10EDC1E39258900C7A4F8 /* ConnectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E10EDB1E39258900C7A4F8 /* ConnectionHandler.m */; };
 		E1E10EE71E392B9900C7A4F8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E10EE61E392B9900C7A4F8 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +41,9 @@
 		E15294F31E384180000E6D69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E15954A21E3943BE00562513 /* TableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableData.m; path = ../TableData.m; sourceTree = "<group>"; };
 		E15954A41E3943CD00562513 /* TableData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TableData.h; path = ../TableData.h; sourceTree = "<group>"; };
+		E15954A81E39635700562513 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		E15954A91E39635700562513 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		E15954AD1E39A2FB00562513 /* defaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultImage.png; sourceTree = "<group>"; };
 		E1E10EDB1E39258900C7A4F8 /* ConnectionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionHandler.m; sourceTree = "<group>"; };
 		E1E10EDD1E3925E400C7A4F8 /* ConnectionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionHandler.h; sourceTree = "<group>"; };
 		E1E10EE61E392B9900C7A4F8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -78,6 +83,8 @@
 		E13DE4271E384CA800F11DD3 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				E15954A81E39635700562513 /* CustomCell.h */,
+				E15954A91E39635700562513 /* CustomCell.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -133,6 +140,7 @@
 				E15294EE1E384180000E6D69 /* Assets.xcassets */,
 				E15294F01E384180000E6D69 /* LaunchScreen.storyboard */,
 				E15294F31E384180000E6D69 /* Info.plist */,
+				E15954AD1E39A2FB00562513 /* defaultImage.png */,
 				E15294E21E384180000E6D69 /* Supporting Files */,
 				E13DE42D1E385AEC00F11DD3 /* Constant.h */,
 			);
@@ -220,6 +228,7 @@
 				E15294F21E384180000E6D69 /* LaunchScreen.storyboard in Resources */,
 				E15294EF1E384180000E6D69 /* Assets.xcassets in Resources */,
 				E15294ED1E384180000E6D69 /* Main.storyboard in Resources */,
+				E15954AE1E39A2FB00562513 /* defaultImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +291,7 @@
 				E15294EA1E384180000E6D69 /* ViewController.m in Sources */,
 				E13DE42B1E384D4400F11DD3 /* LazyLoadTableView.m in Sources */,
 				E15294E71E384180000E6D69 /* AppDelegate.m in Sources */,
+				E15954AA1E39635700562513 /* CustomCell.m in Sources */,
 				E15294E41E384180000E6D69 /* main.m in Sources */,
 				E1E10EDC1E39258900C7A4F8 /* ConnectionHandler.m in Sources */,
 			);

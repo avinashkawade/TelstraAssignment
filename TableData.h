@@ -14,7 +14,7 @@
 @interface TableData : NSObject
 
 @property(nonatomic, retain) NSString* title;
-@property(nonatomic, retain) NSString* descriptionDetail;
+@property(nonatomic, retain) NSString* descriptionData;
 @property(nonatomic, retain) NSString* imgUrl;
 
 @end
