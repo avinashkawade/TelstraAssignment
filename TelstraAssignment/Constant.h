@@ -15,5 +15,5 @@
 #define kTitleFont [UIFont fontWithName:@"Georgia" size:14]
 #define kDescriptionFont [UIFont fontWithName:@"Georgia" size:12]
 #define kDefaultCellHeight 90
-#define kCellPadding 50
+#define kCellPadding 90
 #define kMaximumHeight 40

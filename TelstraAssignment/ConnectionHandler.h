@@ -11,10 +11,14 @@
 
 
 #endif /* ConnectionHandler_h */
+/*-----------------------------------------------------------------------------------------
+ // Description: Protocol Declaration for connection handler
+ //-----------------------------------------------------------------------------------------
+ */
 @protocol ConnectionHandlerProtocol <NSObject>
 
 - (void)handleResponseData:(NSArray *)listData :(NSString *)title;
-- (void)onError:(NSError *)error;
+- (void)handleResponseForError:(NSError *)error;
 
 @end
 

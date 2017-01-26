@@ -13,7 +13,11 @@
 
 @implementation ConnectionHandler
 
-
+/*-----------------------------------------------------------------------------------------
+ // Function:- (void)initConnection
+ // Description: Initialize connection and retrive the json data
+ //-----------------------------------------------------------------------------------------
+ */
 - (void)initConnection
 {
     
@@ -29,7 +33,6 @@
         NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
         return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-        //NSLog(@"File downloaded to: %@", filePath);
         NSData *tData = [NSData dataWithContentsOfURL:filePath];
         NSString *string = [[NSString alloc] initWithData:tData encoding:NSASCIIStringEncoding];
         NSData* mainData = [string dataUsingEncoding:NSUTF8StringEncoding];
@@ -38,13 +41,17 @@
         NSString *title = [jsonData valueForKey:@"title"];
         NSMutableArray *detailDataArray = [self getfilteredDataArray:dataArray];
 
-       // NSLog(@"File Data : %@", detailDataArray);
         [self.delegate handleResponseData:detailDataArray:title];
 
     }];
     [downloadTask resume];
 }
 
+/*-----------------------------------------------------------------------------------------
+ // Function:- -(NSMutableArray *)getfilteredDataArray:(NSArray *)dataArray
+ // Description: Validate the json data in retain the dataList
+ //-----------------------------------------------------------------------------------------
+ */
 -(NSMutableArray *)getfilteredDataArray:(NSArray *)dataArray
 {
     NSMutableArray *detailDataArray = [[NSMutableArray alloc]init];
