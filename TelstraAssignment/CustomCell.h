@@ -15,6 +15,7 @@
 @property(nonatomic, retain) UILabel *title;
 @property(nonatomic, retain) UILabel *descriptionLabel;
 @property(nonatomic, retain) UIImageView *imgThumbnail;
+@property(nonatomic, retain) UIView *separatorLineView;
 @property(nonatomic, strong) NSString *imgThumbnailUrlString;
 @property(nonatomic, strong) UIActivityIndicatorView *loadingIndicator;
 

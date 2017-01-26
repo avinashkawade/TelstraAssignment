@@ -19,6 +19,7 @@
     UINavigationBar *navgationBar;
 }
 @property(nonatomic, strong)NSMutableArray *dataListArray;
+@property(nonatomic, strong)NSString *navigationBarTitle;
 
 @end
 
@@ -26,6 +27,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    loadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    loadingIndicator.center = self.view.center;
+    
+    [self.view addSubview:loadingIndicator];
+    [loadingIndicator startAnimating];
     ConnectionHandler *_connectionObj = [[ConnectionHandler alloc] init];
     [_connectionObj initConnection];
     [_connectionObj setDelegate:self];
@@ -40,18 +46,27 @@
  */
 - (void)handleResponseData:(NSArray *)listData :(NSString *)title
 {
-    //NSLog(@"File Data : %@", listData);
-
+    [loadingIndicator stopAnimating];
     self.dataListArray = [NSMutableArray arrayWithArray:listData];
+    self.navigationBarTitle = title;
+    UINavigationItem *navTitle = [navgationBar.items objectAtIndex:0];
+    navTitle.title = self.navigationBarTitle;
     [lazyTableView reloadData];
 
 }
+
+/*-----------------------------------------------------------------------------------------
+ // Function:-(void)handleResponseForError
+ // Description: Handle the Error after the initial service call fail
+ //-----------------------------------------------------------------------------------------
+ */
 - (void)handleResponseForError:(NSError *)error
 {
+    [loadingIndicator stopAnimating];
 
     UIAlertController * alert=   [UIAlertController
                                   alertControllerWithTitle:@"Error Occured"
-                                  message:@"Failed to download due to something technical issue."
+                                  message:@"Failed to download due to some technical issue."
                                   preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* okAction = [UIAlertAction
@@ -76,8 +91,9 @@
 -(void)setupScreen{
 
         navgationBar = [[UINavigationBar alloc]init];
-        UINavigationItem *navItem = [UINavigationItem alloc];
-        [navgationBar pushNavigationItem:navItem animated:false];
+        UINavigationItem *navgationItem = [UINavigationItem alloc];
+        navgationItem.title = self.navigationBarTitle;
+        [navgationBar pushNavigationItem:navgationItem animated:false];
         [navgationBar setFrame:CGRectMake(navgationBar.frame.origin.x, navgationBar.frame.origin.y, self.view.frame.size.width, kNavigationBarHeight)];
         [self.view addSubview:navgationBar];
         
@@ -91,9 +107,8 @@
         [lazyTableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
         [self.view addSubview:lazyTableView];
         _imageCache=[[NSMutableDictionary alloc]init];
-    
-}
 
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -113,6 +128,14 @@
     
     if(cell == nil){
         cell = [[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        [cell.separatorLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+            //make.top.equalTo(cell.contentView.mas_bottom).with.offset(2);
+            make.left.equalTo(cell.contentView.mas_left).with.offset(0);
+            make.height.mas_equalTo(2);
+            make.bottom.equalTo(cell.contentView.mas_bottom).with.offset(0);
+            make.right.equalTo(cell.contentView.mas_right).with.offset(0);
+        }];
     }
         TableData *dataObj = (TableData*) [self.dataListArray objectAtIndex:indexPath.row];
         cell.title.text = dataObj.title;
@@ -200,14 +223,17 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     //[self updateViewConstraints];
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    [navgationBar setFrame:CGRectMake(navgationBar.frame.origin.x, navgationBar.frame.origin.y, self.view.frame.size.width,kNavigationBarHeight)];
 
     if (UIInterfaceOrientationIsLandscape(orientation))
     {
-        [lazyTableView setFrame:CGRectMake(lazyTableView.frame.origin.x, lazyTableView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-50)];
+        [lazyTableView setFrame:CGRectMake(lazyTableView.frame.origin.x, lazyTableView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-kNavigationBarHeight)];
+        
+
     }
     else
     {
-        [lazyTableView setFrame:CGRectMake(lazyTableView.frame.origin.x, lazyTableView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-50)];
+        [lazyTableView setFrame:CGRectMake(lazyTableView.frame.origin.x, lazyTableView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-kNavigationBarHeight)];
     }
 }
 
@@ -246,7 +272,7 @@ UIEdgeInsets padding = UIEdgeInsetsMake(0, 50, 0, 0);
     }];
     
     [cell.imgThumbnail mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.top.equalTo(self.title.mas_bottom).with.offset(padding.top); //with is an optional semantic filler
+        //make.top.equalTo(self.title.mas_bottom).with.offset(padding.top);
         //make.left.equalTo(self.contentView.mas_left).with.offset(padding.left);
         make.width.mas_equalTo(50);
         make.height.mas_equalTo(50);
@@ -256,13 +282,23 @@ UIEdgeInsets padding = UIEdgeInsetsMake(0, 50, 0, 0);
     }];
     
     [cell.descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(cell.title.mas_bottom).with.offset(5); //with is an optional semantic filler
+        make.top.equalTo(cell.title.mas_bottom).with.offset(5);
         make.left.equalTo(cell.contentView.mas_left).with.offset(padding.left);
         make.bottom.equalTo(cell.contentView.mas_bottom).with.offset(-padding.bottom);
         make.right.equalTo(cell.imgThumbnail.mas_left).with.offset(-5);
     }];
     
+    [cell.separatorLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        //make.top.equalTo(cell.contentView.mas_bottom).with.offset(2);
+        make.left.equalTo(cell.contentView.mas_left).with.offset(0);
+        make.height.mas_equalTo(2);
+        make.bottom.equalTo(cell.contentView.mas_bottom).with.offset(0);
+        make.right.equalTo(cell.contentView.mas_right).with.offset(0);
+    }];
 }
 
+-(void)refreshClick{
+
+}
 
 @end

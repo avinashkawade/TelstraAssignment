@@ -54,10 +54,10 @@
         self.imgThumbnail.backgroundColor = [UIColor lightGrayColor];
         [self.contentView addSubview:self.imgThumbnail];
         
-        
-        self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        [self.imgThumbnail addSubview:self.loadingIndicator];
-        [self.contentView layoutSubviews];
+        self.separatorLineView = [[UIView alloc] init];
+        self.separatorLineView.backgroundColor = [UIColor grayColor];
+        [self.contentView addSubview:self.separatorLineView];      
+      
     }
     return self;
 }

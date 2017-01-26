@@ -17,6 +17,8 @@
 @interface LazyLoadTableView: UIViewController <UITableViewDelegate, UITableViewDataSource,ConnectionHandlerProtocol>
 {
     UITableView *lazyTableView;
-    NSMutableDictionary *_imageCache;;
+    NSMutableDictionary *_imageCache;
+    UIActivityIndicatorView *loadingIndicator;
+
 }
 @end
